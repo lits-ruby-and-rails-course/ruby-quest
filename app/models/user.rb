@@ -1,6 +1,19 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  ROLES = ['superadmin', 'student', 'teacher']
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
+  def superadmin?
+    role == 'superadmin'
+  end
+
+  def student?
+    role == 'student'
+  end
+
+  def teacher?
+    role == 'teacher'
+  end
 end
