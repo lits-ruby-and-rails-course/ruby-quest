@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title RubyQuest
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .container
+      .header.clearfix
+        %nav
+          %ul.nav.nav-pills.pull-right
+            - if current_user && current_user.teacher?
+              %li{:role => "presentation"}= link_to 'Exams', [:teachers, :exams]
+            - if user_signed_in?
+              %li{:role => "presentation"}= link_to 'Sign Out', '/users/sign_out', method: :delete
+            - else
+              %li{:role => "presentation"}= link_to 'Log In', '/users/sign_in'
+              %li{:role => "presentation"}= link_to 'Register', '/users/sign_up'
+        %h3.text-muted.pull-left RubyQuest
+      - if notice
+        .alert.alert-success{:role => "alert"}= notice
+      - if alert
+        .alert.alert-warning{:role => "alert"}= alert
+      = yield
