@@ -12,12 +12,14 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'haml'
+gem 'haml-rails', '~> 1.0'
 # Use SCSS for stylesheets
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'devise'
-gem "letter_opener", :group => :development
+gem 'letter_opener', :group => :development
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
