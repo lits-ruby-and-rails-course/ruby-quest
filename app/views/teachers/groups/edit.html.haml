@@ -1,0 +1,21 @@
+%h1 Editing groups
+= form_with scope: :group, url: teachers_groups_path, local: true do |form|
+  - if @group.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@group.errors.count, "error")
+        prohibited
+        this group from being saved:
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+  
+    = form.submit
+= link_to 'Back', teachers_groups_path
+
+%h1 Edit Groups
+/= render 'form'

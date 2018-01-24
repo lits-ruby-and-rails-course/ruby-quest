@@ -1,0 +1,10 @@
+<%= form_for @group do |f| %>
+  <% @group.errors.full_messages.each do |e| %>
+    <%= e %>
+  <% end %>
+  <br><br>
+  Title<br/>
+  <%= f.text_field :title %><br/><br/>
+  Content<br/>
+ 
+<% end %>
