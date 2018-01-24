@@ -1,9 +1,9 @@
-class AnswerController < ApplicationController
-  before_action :authenticate_user!, only: [:teacher]
+class Teachers::AnswersController < ApplicationController
+  before_action :authenticate_user!
 
 	def index
-		@fantastic_books = Answer.all
-    end
+		@answers = Answer.all
+  end
 
 	def show
 	    @answer = Answer.find(params[:id])
