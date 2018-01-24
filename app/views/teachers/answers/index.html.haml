@@ -1,0 +1,7 @@
+%h1 Answers
+- @answers.each do |answer|
+  %p
+    %strong Title:
+    = answer.title
+
+  = link_to 'Edit', edit_teachers_answer_path(answer)

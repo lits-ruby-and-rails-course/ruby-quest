@@ -2,10 +2,8 @@ Rails.application.routes.draw do
 
   namespace :teachers do
     resources :quizzes
-  end
-
-    namespace :teachers do
-    resources :answers, only: [:index]
+    resources :exams, only: [:index]
+    resources :answers
   end
 
   devise_for :users
