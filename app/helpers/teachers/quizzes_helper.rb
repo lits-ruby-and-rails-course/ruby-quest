@@ -1,0 +1,2 @@
+module Teachers::QuizzesHelper
+end
