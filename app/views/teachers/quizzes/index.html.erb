@@ -1,8 +1,0 @@
-<%= link_to 'New Quiz', teachers_quizzes_new_path %>
-	  <% @quizzes.each do |quiz| %>
-      <%= quiz.title %>
-      <%= link_to 'Show', teachers_quizzes_show_path %>
-      <%= link_to 'Edit', teachers_quizzes_edit_path %>
-      <%= link_to 'Destroy', teachers_quizzes_path(quiz), method: :delete %>
-<% end %>
-
