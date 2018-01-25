@@ -1,0 +1,26 @@
+%h1 New questions
+
+= form_for :question, local: true do |form|
+  %p
+    = form.label :question
+    %br/
+    = form.text_field :text
+    %br/
+    = form.label :Сhoose_possible_answers
+    %br/
+    = form.check_box :question
+    = form.label :question, "I agree to the policies_path."
+    %br/
+    = form.check_box :question
+    = form.label :question, "I agree to the policies_path."
+    %br/
+    = form.check_box :question
+    = form.label :question, "I agree to the policies_path."
+    %br/
+    = form.check_box :question
+    = form.label :question, "I agree to the policies_path."
+    %br/
+    = form.check_box :question
+    = form.label :question, "I agree to the policies_path."
+    %br/
+    = form.submit
