@@ -30,7 +30,7 @@ def index
   end
  
   def update
- 
+ 		@group = Group.find(params[:id])
     if @group.update params.require(:group).permit(:title)
       redirect_to teachers_groups_path
     else
@@ -39,7 +39,6 @@ def index
   end
  
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
  
     redirect_to teachers_groups_path

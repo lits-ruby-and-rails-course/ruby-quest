@@ -8,25 +8,14 @@
 /   Content<br/>
  
 / <% end %>
-= form_for[:teachers, @group] @group do |f|
-  %p
-    = form.label :title
-    %br/
-    = form.text_field :title
-  = form.submit
-
-/ = form_for[:teachers, @group] @group do |f|
-/ - @group.errors.full_messages.each do |e|
-/   = e
-/ %br/
-/ %br/
-/ Title
-/ %br/
-/ = f.text_field :title
-/ %br/
-/ %br/
-/ Content
-/ %br/
-/ = f.text_field :content
-/ %br/
-/ %br/
+= form_for [:teachers, @group] do |f|
+	- @group.errors.full_messages.each do |e|
+		= e
+	%br/
+	%br/
+	Title
+	%br/
+	= f.text_field :title
+	%br/
+	%br/
+	= f.submit
