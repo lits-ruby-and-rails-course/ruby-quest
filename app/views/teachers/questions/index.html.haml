@@ -1,0 +1,28 @@
+%h1{:style => 'color:Green; text-align:center'} LITS Candidate Form
+
+%h3{:style => 'color:Green; text-align:center'} Enter your unique test ID
+
+%div{:style => 'text-align:center'}
+  If you do not have test ID leave field blank or write to
+  %a{:href => 'mailto:admin@lits.ua'} admin@lits.ua
+  to get one
+
+%div{:style => 'text-align:center'}
+  My ID:
+  %input{:style => 'color:Blue'}
+  %br/
+  %input.MyButton{:style => 'width: 100px; padding: 5px; cursor: pointer; box-shadow: 1px 1px 1px; #999; -webkit-box-shadow: 1px 1px 1px #999; -moz-box-shadow: 1px 1px 1px #999; font-weight: bold; background: #3366cc; color: #000; border-radius: 5px; border: 1px solid #999; font-size: 90%;',:onclick => "window.location.href='http://www.google.com'", :type => 'button', :value => 'Start'}
+
+
+
+%h1 Listing guestions
+%table
+  %tr
+    %th Question
+    %th Possible_answers
+    %th
+  - @questions.each do |question|
+    %tr
+      %td= question.title
+      %td= question.text
+      %td= link_to 'Show', question_path(question)
