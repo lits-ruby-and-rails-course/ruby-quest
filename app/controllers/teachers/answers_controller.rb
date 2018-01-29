@@ -21,7 +21,7 @@ class Teachers::AnswersController < ApplicationController
 	   		@answer = Answer.new(answer_params)
 	 
 	  	if @answer.save
-	  		redirect_to @answer
+	  		redirect_to [:teachers, :answers]
 	  	else 
 	  		render 'new'
 	  	end
@@ -31,7 +31,7 @@ class Teachers::AnswersController < ApplicationController
   		@answer = Answer.find(params[:id])
  
   		if @answer.update(answer_params)
-    		redirect_to @answer
+    		redirect_to [:teachers, :answers]
   		else
     		render 'edit'
   		end
@@ -42,7 +42,7 @@ class Teachers::AnswersController < ApplicationController
 	  @answer = Answer.find(params[:id])
 	  @answer.destroy
 	 
-	  redirect_to answer_path
+	  redirect_to [:teachers, :answers]
 	end
 
 		private

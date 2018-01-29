@@ -4,4 +4,8 @@
     %strong Title:
     = answer.title
 
-  = link_to 'Edit', edit_teachers_answer_path(answer)
+  = link_to 'Edit', edit_teachers_answer_path(answer), { :class=>"btn btn-success" }
+  = link_to 'Show', teachers_answer_path(answer), { :class=>"btn btn-success" }
+  = link_to 'Add answer', new_teachers_answer_path, { :class=>"btn btn-success" }
+  = link_to 'Destroy', teachers_answer_path(answer), { method: :delete, :class=>"btn btn-success" }
+  %p
