@@ -1,6 +1,11 @@
 %p
   %strong Question:
-  = @question.title
-%p
-  %strong Text:
-  = @question.text
+= @question.title
+
+=link_to 'Edit', edit_teachers_question_path(@question), class: 'btn btn-success'
+
+=link_to 'Back', teachers_questions_path, class: 'btn btn-success'
+
+=link_to 'Destroy', teachers_question_path(@question), class: 'btn btn-success',
+              method: :delete,
+              data: { confirm: 'Are you sure?' }

@@ -13,26 +13,40 @@ class Teachers::QuestionsController < ApplicationController
 	  @question = Question.new
   end
 
-	# def create
- #  	@questions = Question.new(params[:question])
- 
- #  	@questions.save
- #  	redirect_to teachers_questions_path
-	# end
+  def edit
+    @question = Question.find(params[:id])
+  end
+
   def create
-    @question = Question.new params.require(:question).permit(:title)
+    @question = Question.new(question_params)
  
     if @question.save
-      redirect_to  teachers_questions_path
+      redirect_to  [:teachers, :questions]
     else
       render 'new'
     end
   end
 
+  def update
+  @question = Question.find(params[:id])
+ 
+  if @question.update(question_params)
+    redirect_to  [:teachers, :questions]
+  else
+    render 'edit'
+  end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+ 
+    redirect_to teachers_questions_path
+  end
 
 	private
   def question_params
-    params.require(:question).permit(:question, :text)
+    params.require(:question).permit(:title, :text)
   end
 
   private
