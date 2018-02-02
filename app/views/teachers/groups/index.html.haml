@@ -1,0 +1,32 @@
+%h1 Teachers::Group
+%table.table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+  - @groups.each do |group|
+    %tr
+      %td.info= group.title
+      %td.info= link_to 'Show', teachers_group_path(group.id)
+      %td.info= link_to 'Edit', edit_teachers_group_path(group.id)
+      %td= link_to 'delete', teachers_group_path(group.id), |
+        method: :delete,                          |
+        data: { confirm: 'Are you sure?' }        |
+
+
+
+
+
+
+
+
+
+
+
+
+/ %button.btn.btn-success{:type => "button"} New Group, new_teachers_group_path(@groups)
+= link_to 'New Grup', new_teachers_group_path, class: 'btn btn-success'
+
+
+

@@ -1,0 +1,10 @@
+/ %h1 New Group
+/ = form_with scope: :group, url: teachers_groups_path, local: true do |form|
+/   %p
+/     = form.label :title
+/     %br/
+/     = form.text_field :title
+/   %p
+/     = form.submit
+= render 'form'
+= link_to 'Back', teachers_groups_path
