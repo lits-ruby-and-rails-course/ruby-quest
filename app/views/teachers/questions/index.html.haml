@@ -1,0 +1,16 @@
+%h1 Listing guestions
+
+= link_to 'Create new question', new_teachers_question_path, class: 'btn btn-success'
+%table
+  %tr
+    %th Questions
+    %th
+  - @questions.each do |question|
+    %tr
+      %td= question.title
+      %td= question.text
+      %td= link_to 'Show', teachers_question_path(question), class: 'btn btn-success'
+      %td= link_to 'Edit', edit_teachers_question_path(question), class: 'btn btn-success'
+      %td= link_to 'Destroy', teachers_question_path(question), class: 'btn btn-success',
+              method: :delete,
+              data: { confirm: 'Are you sure?' }

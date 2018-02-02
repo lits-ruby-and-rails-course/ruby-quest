@@ -1,0 +1,7 @@
+= form_for [:teachers, @quiz] do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+  %p
+    = form.submit
