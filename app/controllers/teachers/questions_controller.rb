@@ -11,7 +11,7 @@ class Teachers::QuestionsController < ApplicationController
   end
 
   def new
-	  @question = Question.new
+    @question = Question.new
   end
 
   def edit
@@ -43,11 +43,12 @@ class Teachers::QuestionsController < ApplicationController
   end
 
 	private
-    def question_params
-    params.require(:question).permit(:title, :text)
-    end
 
-    def check_role
+  def question_params
+    params.require(:question).permit(:title, :text)
+  end
+
+  def check_role
     redirect_to root_path, alert: 'You are not a teacher' unless current_user.teacher?
-    end
+  end
 end
