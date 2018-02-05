@@ -1,7 +1,4 @@
-class Teachers::QuestionsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_role
-
+class Teachers::QuestionsController < Teachers::ApplicationController
   def index
     @questions = Question.all
   end
@@ -46,9 +43,5 @@ class Teachers::QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :text)
-  end
-
-  def check_role
-    redirect_to root_path, alert: 'You are not a teacher' unless current_user.teacher?
   end
 end

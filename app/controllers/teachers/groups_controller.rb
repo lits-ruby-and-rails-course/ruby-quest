@@ -1,9 +1,5 @@
-class Teachers::GroupsController < ApplicationController
-  before_action :authenticate_user!
- # before_action :check_role
-
- 
-def index
+class Teachers::GroupsController < Teachers::ApplicationController
+  def index
     @groups = Group.all
   end
  
@@ -44,9 +40,4 @@ def index
  
     redirect_to teachers_groups_path
   end
-  private
-
-  # def check_role
-    # redirect_to root_path, alert: 'You are not a teacher' unless current_user.teacher?
-  # end
 end

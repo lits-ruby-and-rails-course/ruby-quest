@@ -12,8 +12,11 @@
         %nav
           %ul.nav.nav-pills.pull-right
             - if current_user && current_user.teacher?
-              %li{:role => "presentation"}= link_to 'Answers', [:teachers, :answers]
-              %li{:role => "presentation"}= link_to 'Exams', [:teachers, :exams]
+              %li= link_to 'Answers', [:teachers, :answers]
+              %li= link_to 'Quizzes', [:teachers, :quizzes]
+              %li= link_to 'Questions', [:teachers, :questions]
+              %li= link_to 'Groups', [:teachers, :groups]
+              %li= link_to 'Exams', [:teachers, :exams]
             - if user_signed_in?
               %li{:role => "presentation"}= link_to 'Sign Out', '/users/sign_out', method: :delete
             - else

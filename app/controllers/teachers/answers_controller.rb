@@ -1,6 +1,4 @@
-class Teachers::AnswersController < ApplicationController
-  before_action :authenticate_user!
-
+class Teachers::AnswersController < Teachers::ApplicationController
 	def index
 		@answers = Answer.all
   end
@@ -18,23 +16,23 @@ class Teachers::AnswersController < ApplicationController
 	end
 
 	def create
-	   		@answer = Answer.new(answer_params)
+    @answer = Answer.new(answer_params)
 	 
-	  	if @answer.save
-	  		redirect_to [:teachers, :answers]
-	  	else 
-	  		render 'new'
-	  	end
+	  if @answer.save
+  		redirect_to [:teachers, :answers]
+  	else 
+  		render 'new'
+  	end
 	end
 
 	def update
-  		@answer = Answer.find(params[:id])
- 
-  		if @answer.update(answer_params)
-    		redirect_to [:teachers, :answers]
-  		else
-    		render 'edit'
-  		end
+		@answer = Answer.find(params[:id])
+
+		if @answer.update(answer_params)
+  		redirect_to [:teachers, :answers]
+		else
+  		render 'edit'
+		end
 	end
 
 
@@ -45,8 +43,9 @@ class Teachers::AnswersController < ApplicationController
 	  redirect_to [:teachers, :answers]
 	end
 
-		private
+	private
+
 	def answer_params
-	     params.require(:answer).permit(:title)
+    params.require(:answer).permit(:title, :question_id)
 	end
 end
