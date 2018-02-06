@@ -9,6 +9,7 @@ class Teachers::QuestionsController < Teachers::ApplicationController
 
   def new
     @question = Question.new
+    @question.answers.build
   end
 
   def edit
@@ -42,6 +43,6 @@ class Teachers::QuestionsController < Teachers::ApplicationController
 	private
 
   def question_params
-    params.require(:question).permit(:title, :text)
+    params.require(:question).permit(:title, :text, answers_attributes: [:title])
   end
 end

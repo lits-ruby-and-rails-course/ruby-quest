@@ -1,20 +1,32 @@
-= form_for [:teachers, @question] do |form|
-  - if @question.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@question.errors.count, "error")
-        prohibited
-        this question from being saved:
-      %ul
-        - @question.errors.full_messages.each do |msg|
-          %li= msg
-  %p
-    = form.label :title
-    %br/
-    = form.text_field :title
-    %br/
-    = form.label :text
-    %br/
-    = form.text_area :text
-    %br/
-    = form.submit
+.row
+  .col-md-6.col-md-offset-3
+    = form_for [:teachers, @question] do |form|
+      - if @question.errors.any?
+        #error_explanation
+          %h4
+            = pluralize(@question.errors.count, "error")
+            prohibited
+            this question from being saved:
+          %ul
+            - @question.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = form.label :title
+        = form.text_field :title, class: 'form-control'
+      .form-group
+        = form.label :text
+        = form.text_area :text, class: 'form-control'
+      .form-group.answers
+        %h4 Answers
+        = form.fields_for :answers do |answer_form|
+          .form-group
+            .row
+              .col-md-1.index
+                = answer_form.index + 1
+              .col-md-11
+                = answer_form.text_field :title, class: 'form-control'
+        = link_to '+ Add answer', '#', class: 'add-answer'
+      .form-group
+        .row
+          .col-md-4= form.submit 'Save', class: 'btn btn-success btn-block'
+          .col-md-4= link_to 'Back', teachers_questions_path, class: 'btn btn-default btn-block'
