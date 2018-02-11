@@ -1,7 +1,4 @@
-class Teachers::QuizzesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_role
-
+class Teachers::QuizzesController < Teachers::ApplicationController
   def index
     @quizzes = Quiz.all
   end
@@ -46,11 +43,8 @@ class Teachers::QuizzesController < ApplicationController
   end
  
   private
-    def check_role
-    redirect_to root_path, alert: 'You are not a teacher' unless current_user.teacher?
-    end
     
-    def quiz_params
-      params.require(:quiz).permit(:title)
-    end
+  def quiz_params
+    params.require(:quiz).permit(:title)
+  end
 end

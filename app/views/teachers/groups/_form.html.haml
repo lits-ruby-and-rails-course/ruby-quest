@@ -1,0 +1,21 @@
+/ <%= form_for[:teachers, @group] @group do |f| %>
+/   <% @group.errors.full_messages.each do |e| %>
+/     <%= e %>
+/   <% end %>
+/   <br><br>
+/   Title<br/>
+/   <%= f.text_field :title %><br/><br/>
+/   Content<br/>
+ 
+/ <% end %>
+= form_for [:teachers, @group] do |f|
+	- @group.errors.full_messages.each do |e|
+		= e
+	%br/
+	%br/
+	Title
+	%br/
+	= f.text_field :title
+	%br/
+	%br/
+	= f.submit

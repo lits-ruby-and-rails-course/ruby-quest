@@ -1,0 +1,11 @@
+= form_for [:teachers, @answer] do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+    %br/
+    = form.label :question
+    %br/
+    = form.select :question_id, Question.all.map{|a| [a.title, a.id] }
+  %p
+    = form.submit
