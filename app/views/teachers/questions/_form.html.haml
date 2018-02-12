@@ -16,8 +16,11 @@
       .form-group
         = form.label :text
         = form.text_area :text, class: 'form-control'
+      .form-group
+        %h4 Select Answers from existing ones
+        = form.select :answer_ids, Answer.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
       .form-group.answers
-        %h4 Answers
+        %h4 Create Answers
         = form.fields_for :answers do |answer_form|
           .form-group
             .row
