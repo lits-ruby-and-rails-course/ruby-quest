@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
-  has_many :answers
 	validates :title, presence: true, length: { minimum: 1 }
+
+  has_and_belongs_to_many :answers
+  has_many :tags, as: :tagable
+  accepts_nested_attributes_for :answers
 end
