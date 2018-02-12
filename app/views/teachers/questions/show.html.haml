@@ -1,6 +1,9 @@
-%p
-  %strong Question:
-= @question.title
+%h3 Question:
+%strong= @question.title
+%p= @question.text
+%ul
+  - @question.answers.each do |answer| 
+    %li=answer.title
 
 =link_to 'Edit', edit_teachers_question_path(@question), class: 'btn btn-success'
 
