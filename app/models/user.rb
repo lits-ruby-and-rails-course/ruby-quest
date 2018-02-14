@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+ belongs_to :goup
   ROLES = ['superadmin', 'student', 'teacher']
 
   devise :database_authenticatable, :registerable,
