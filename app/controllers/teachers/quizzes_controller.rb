@@ -9,6 +9,7 @@ class Teachers::QuizzesController < Teachers::ApplicationController
 
   def new
     @quiz = Quiz.new
+    @quiz.questions.build
   end
  
   def edit
