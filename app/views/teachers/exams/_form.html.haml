@@ -1,0 +1,25 @@
+.row
+  .col-md-6.col-md-offset-3
+    = form_for [:teachers, @exam] do |form|
+      - if @exam.errors.any?
+        #error_explanation
+          %h4
+            = pluralize(@exam.errors.count, "error")
+            prohibited
+            this exam from being saved:
+          %ul
+            - @exam.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = form.label :title
+        = form.text_field :title, class: 'form-control'
+      .form-group
+        = form.label :start_time
+        = form.text_field :start_time, class: 'form-control'
+      .form-group
+        = form.label :end_time
+        = form.text_field :end_time, class: 'form-control'
+      .form-group
+        .row
+          .col-md-4= form.submit 'Save', class: 'btn btn-success btn-block'
+          .col-md-4= link_to 'Back', teachers_exams_path, class: 'btn btn-default btn-block'
