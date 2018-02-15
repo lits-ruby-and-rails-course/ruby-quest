@@ -1,6 +1,6 @@
 class Teachers::QuestionsController < Teachers::ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.preload(:answers).all
   end
 
   def show
