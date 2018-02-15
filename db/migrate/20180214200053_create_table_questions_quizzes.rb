@@ -5,7 +5,7 @@ class CreateTableQuestionsQuizzes < ActiveRecord::Migration[5.1]
       t.integer :quiz_id
     end
 
-    add_index :answers_questions, :question_id
-    add_index :answers_questions, :answer_id
+    add_index :questions_quizzes, :question_id
+    add_index :questions_quizzes, :quiz_id
   end
 end
