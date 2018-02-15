@@ -9,6 +9,7 @@ class Teachers::ExamsController < Teachers::ApplicationController
 
   def new
     @exam = Exam.new
+    @exam.quizzes.build
   end
 
   def edit
@@ -42,6 +43,6 @@ class Teachers::ExamsController < Teachers::ApplicationController
 private
 
   def exam_params
-    params.require(:exam).permit(:title, :start_time, :end_time)
+    params.require(:exam).permit(:title, :start_time, :end_time, quiz_ids: [], quizzes_attributes: [:id])
   end
 end

@@ -3,6 +3,8 @@
 %p= @exam.start_time
 %p= @exam.end_time
 %ul
+  - @exam.quizzes.each do |quiz| 
+    %li=quiz.title
 
 =link_to 'Edit', edit_teachers_exam_path(@exam), class: 'btn btn-success'
 
