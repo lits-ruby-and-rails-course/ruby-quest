@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :teachers do
     resources :quizzes
-    resources :exams, only: [:index]
+    resources :exams
     resources :groups 
     resources :answers
     resources :questions
