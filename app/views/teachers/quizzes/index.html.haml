@@ -1,9 +1,19 @@
-- @quizzes.each do |quiz|
-  .jumbotron
-    .container
-      %h2= quiz.title
-      %p
-        = link_to 'Show', teachers_quiz_path(quiz.id), { :class=>"btn btn-success" }
-        = link_to 'Edit', edit_teachers_quiz_path(quiz.id), { :class=>"btn btn-success" }
-        = link_to 'Destroy', teachers_quiz_path(quiz.id), { method: :delete, :class=>"btn btn-success" }
-= link_to 'New Quiz', new_teachers_quiz_path, { :class=>"btn btn-success" }        
+.row.questions
+  .col-md-6
+    %h2 Quizzes
+  .col-md-6.text-right
+    = link_to 'Create new quiz', new_teachers_quiz_path, class: 'btn btn-success'
+%br
+%table.table
+  - @quizzes.each do |quiz|
+    %tr
+      %td
+        %strong= quiz.title
+        - if quiz.questions.any?
+          %h5 questions
+          %ul
+            - quiz.questions.each do |question|
+              %li= question.title
+      %td= link_to 'Show', teachers_quiz_path(quiz), class: 'btn btn-success'
+      %td= link_to 'Edit', edit_teachers_quiz_path(quiz), class: 'btn btn-default'
+      %td= link_to 'Destroy', teachers_quiz_path(quiz), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

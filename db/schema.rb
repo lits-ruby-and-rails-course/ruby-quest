@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20180213185542) do
     t.index ["question_id"], name: "index_answers_questions_on_question_id"
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.string "title"
+    t.string "start_time"
+    t.string "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -36,10 +44,17 @@ ActiveRecord::Schema.define(version: 20180213185542) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.string "question"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.integer "quiz_id"
+  end
+
+  create_table "questions_quizzes", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "quiz_id"
   end
 
   create_table "quizzes", force: :cascade do |t|

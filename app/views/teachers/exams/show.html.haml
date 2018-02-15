@@ -1,0 +1,13 @@
+%h3 Exam:
+%strong= @exam.title
+%p= @exam.start_time
+%p= @exam.end_time
+%ul
+
+=link_to 'Edit', edit_teachers_exam_path(@exam), class: 'btn btn-success'
+
+=link_to 'Back', teachers_exams_path, class: 'btn btn-success'
+
+=link_to 'Destroy', teachers_exam_path(@exam), class: 'btn btn-success',
+              method: :delete,
+              data: { confirm: 'Are you sure?' }
