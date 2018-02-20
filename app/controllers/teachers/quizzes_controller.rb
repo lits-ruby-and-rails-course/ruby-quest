@@ -9,6 +9,7 @@ class Teachers::QuizzesController < Teachers::ApplicationController
 
   def new
     @quiz = Quiz.new
+    @quiz.questions.build
   end
  
   def edit
@@ -45,6 +46,6 @@ class Teachers::QuizzesController < Teachers::ApplicationController
   private
     
   def quiz_params
-    params.require(:quiz).permit(:title, :exam_id)
+    params.require(:quiz).permit(:title , :exam_id, question_ids: [], questions_attributes: [:title])
   end
 end

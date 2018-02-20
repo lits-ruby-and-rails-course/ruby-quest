@@ -1,6 +1,6 @@
 class Teachers::QuestionsController < Teachers::ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.preload(:answers).all
   end
 
   def show
@@ -41,7 +41,6 @@ class Teachers::QuestionsController < Teachers::ApplicationController
   end
 
 	private
-
   def question_params
     params.require(:question).permit(:title, :text, answer_ids: [], answers_attributes: [:title])
   end

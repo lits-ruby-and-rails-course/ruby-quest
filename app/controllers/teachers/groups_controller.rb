@@ -16,7 +16,7 @@ class Teachers::GroupsController < Teachers::ApplicationController
   end
  
   def create
-    @group = Group.new params.require(:group).permit(:title)
+    @group = Group.new params.require(:group).permit(:title, user_ids: [])
  
     if @group.save
       redirect_to  teachers_groups_path
@@ -27,7 +27,7 @@ class Teachers::GroupsController < Teachers::ApplicationController
  
   def update
  		@group = Group.find(params[:id])
-    if @group.update params.require(:group).permit(:title)
+    if @group.update params.require(:group).permit(:title, user_ids: [])
       redirect_to teachers_groups_path
     else
       render 'edit'

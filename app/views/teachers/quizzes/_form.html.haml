@@ -1,11 +1,35 @@
-= form_for [:teachers, @quiz] do |form|
-  %p
-  = form.label :title
-  %br/
-  = form.text_field :title
-  %br/
-  = form.label :exam
-  %br/
-  = form.select :exam_id, Exam.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
-  %p
-    = form.submit
+.row
+  .col-md-6.col-md-offset-3
+    = form_for [:teachers, @quiz] do |form|
+      - if @quiz.errors.any?
+        #error_explanation
+          %h4
+            = pluralize(@quiz.errors.count, "error")
+            prohibited
+            this quiz from being saved:
+          %ul
+            - @quiz.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = form.label :title
+        = form.text_field :title, class: 'form-control'
+      .form-group
+        = form.label :exams
+        = form.select :exam_id, Exam.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
+      .form-group
+        %h4 Select Question from existing ones
+        = form.select :question_ids, Question.all.map{|q| [q.title, q.id] }, {}, {class: 'form-control', multiple: true}
+      .form-group.answers
+        %h4 Create Question
+        = form.fields_for :questions do |question_form|
+          .form-group
+            .row
+              .col-md-1.index
+                = question_form.index + 1
+              .col-md-11
+                = question_form.text_field :title, class: 'form-control'
+        = link_to '+ Add answer', '#', class: 'add-answer'
+      .form-group
+        .row
+          .col-md-4= form.submit 'Save', class: 'btn btn-success btn-block'
+          .col-md-4= link_to 'Back', teachers_quizzes_path, class: 'btn btn-default btn-block'

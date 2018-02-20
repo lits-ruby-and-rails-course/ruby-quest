@@ -1,21 +1,13 @@
-/ <%= form_for[:teachers, @group] @group do |f| %>
-/   <% @group.errors.full_messages.each do |e| %>
-/     <%= e %>
-/   <% end %>
-/   <br><br>
-/   Title<br/>
-/   <%= f.text_field :title %><br/><br/>
-/   Content<br/>
- 
-/ <% end %>
-= form_for [:teachers, @group] do |f|
-	- @group.errors.full_messages.each do |e|
-		= e
-	%br/
-	%br/
-	Title
-	%br/
-	= f.text_field :title
-	%br/
-	%br/
-	= f.submit
+.row
+  .col-md-4.col-md-offset-4
+    = form_for [:teachers, @group] do |form|
+      %p
+        = form.label :title
+        %br/
+        = form.text_field :title, class: 'form-control'
+        %br/
+        = form.label :user
+        %br/
+        = form.select :user_ids, User.all.map{|a| [a.email, a.id] }, {}, {class: 'form-control', multiple: true}
+      %p
+        = form.submit
