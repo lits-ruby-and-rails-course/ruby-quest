@@ -11,6 +11,11 @@
         %strong= exam.title
         = exam.start_time
         = exam.end_time
+        - if exam.quizzes.any?
+          %h5 Quizzes
+          %ul
+            - exam.quizzes.each do |quiz|
+              %li= quiz.title
       %td= link_to 'Show', teachers_exam_path(exam), class: 'btn btn-success'
       %td= link_to 'Edit', edit_teachers_exam_path(exam), class: 'btn btn-default'
       %td= link_to 'Destroy', teachers_exam_path(exam), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

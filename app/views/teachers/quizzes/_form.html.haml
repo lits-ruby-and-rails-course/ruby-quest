@@ -14,6 +14,9 @@
         = form.label :title
         = form.text_field :title, class: 'form-control'
       .form-group
+        = form.label :exams
+        = form.select :exam_id, Exam.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
+      .form-group
         %h4 Select Question from existing ones
         = form.select :question_ids, Question.all.map{|q| [q.title, q.id] }, {}, {class: 'form-control', multiple: true}
       .form-group.answers

@@ -20,6 +20,9 @@
         = form.label :end_time
         = form.text_field :end_time, class: 'form-control'
       .form-group
+        %h4 Select Quizzes from existing ones
+        = form.select :quiz_ids, Quiz.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
+      .form-group
         .row
           .col-md-4= form.submit 'Save', class: 'btn btn-success btn-block'
           .col-md-4= link_to 'Back', teachers_exams_path, class: 'btn btn-default btn-block'

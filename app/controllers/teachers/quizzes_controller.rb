@@ -46,6 +46,6 @@ class Teachers::QuizzesController < Teachers::ApplicationController
   private
     
   def quiz_params
-    params.require(:quiz).permit(:title, question_ids: [], questions_attributes: [:title])
+    params.require(:quiz).permit(:title , :exam_id, question_ids: [], questions_attributes: [:title])
   end
 end
