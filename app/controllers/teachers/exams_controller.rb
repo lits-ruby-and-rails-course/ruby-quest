@@ -43,6 +43,6 @@ class Teachers::ExamsController < Teachers::ApplicationController
 private
 
   def exam_params
-    params.require(:exam).permit(:title, :start_time, :end_time, quiz_ids: [], quizzes_attributes: [:id])
+    params.require(:exam).permit(:title, :start_time, :end_time, quiz_ids: [], quizzes_attributes: [:title])
   end
 end

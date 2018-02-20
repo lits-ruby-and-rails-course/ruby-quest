@@ -1,7 +1,11 @@
 = form_for [:teachers, @quiz] do |form|
   %p
-    = form.label :title
-    %br/
-    = form.text_field :title
+  = form.label :title
+  %br/
+  = form.text_field :title
+  %br/
+  = form.label :exam
+  %br/
+  = form.select :exam_id, Exam.all.map{|a| [a.title, a.id] }, {}, {class: 'form-control', multiple: true}
   %p
     = form.submit

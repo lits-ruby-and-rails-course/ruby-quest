@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214164424) do
+ActiveRecord::Schema.define(version: 20180220144050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,17 @@ ActiveRecord::Schema.define(version: 20180214164424) do
 
   create_table "exams", force: :cascade do |t|
     t.string "title"
-    t.string "start_time"
-    t.string "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exams_quizzes", id: false, force: :cascade do |t|
+    t.integer "quiz_id"
+    t.integer "exam_id"
+    t.index ["exam_id"], name: "index_exams_quizzes_on_exam_id"
+    t.index ["quiz_id"], name: "index_exams_quizzes_on_quiz_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -80,7 +87,6 @@ ActiveRecord::Schema.define(version: 20180214164424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "student"
-    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

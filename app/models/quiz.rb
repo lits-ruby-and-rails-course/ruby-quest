@@ -1,4 +1,4 @@
 class Quiz < ApplicationRecord
   has_many :tags, as: :tagable
-  #belongs_to :exam
+  has_and_belongs_to_many :exams
 end
