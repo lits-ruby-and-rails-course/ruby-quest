@@ -1,6 +1,11 @@
 class Teachers::QuestionsController < Teachers::ApplicationController
   def index
     @questions = Question.preload(:answers).all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @questions }
+    end
   end
 
   def show

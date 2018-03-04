@@ -1,10 +1,16 @@
 class Teachers::AnswersController < Teachers::ApplicationController
 	def index
-		@answers = Answer.all
+		@answers = params[:question_id] ? Answer.joins(:questions).where("questions.id = ?", params[:question_id]) : Answer.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @answers }
+      format.xml { render json: @answers }
+    end
   end
 
 	def show
-	    @answer = Answer.find(params[:id])
+    @answer = Answer.find(params[:id])
 	end
 
 	def new

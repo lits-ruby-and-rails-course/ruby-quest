@@ -7,15 +7,9 @@ class User < ApplicationRecord
 
   belongs_to :group, optional: true
 
-  def superadmin?
-    role == 'superadmin'
-  end
-
-  def student?
-    role == 'student'
-  end
-
-  def teacher?
-    role == 'teacher'
+  ROLES.each do |role_name|
+    define_method("#{role_name}?") do
+      role == role_name
+    end
   end
 end
