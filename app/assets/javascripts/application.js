@@ -31,4 +31,20 @@ $(function(){
     $('.answers').append(answerRow);
     $('.answers').append($('.add-answer'));
   });
+
+  $(".show-answers").on('click', function(e){
+    e.preventDefault();
+    var id = $(this).data('id')
+    var btn = $(this)
+
+    $.get('/teachers/answers.json?question_id='+id).then(function(response){
+      response.forEach(function(answer){
+        var aswerHtml = "<li>";
+        aswerHtml += answer.title;
+        aswerHtml += "</li>";
+
+        btn.parent().find('.answers').append(aswerHtml);
+      })
+    })  
+  })
 });
